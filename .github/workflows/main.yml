@@ -1,0 +1,28 @@
+name: VPS 01
+
+on: 
+  workflow_dispatch:
+    inputs:
+      authcode:
+        description: 'Copy Lệnh Trong https://remotedesktop.google.com/headless'
+        required: true
+      pincode:
+        description: 'Nhập Pass Trong Này'
+        required: true
+  
+jobs:
+  build:
+    runs-on: windows-2019
+
+    steps:  
+    - uses: actions/checkout@v2
+    - name: Cài Đặt
+      run: ./setup.ps1
+    - name: Starting CRD
+      run: ${{ github.event.inputs.authcode }} -pin=${{ github.event.inputs.pincode }}
+    - name: Assign User
+      run: Set-LocalUser -Name "runneradmin" -Password (ConvertTo-SecureString -AsPlainText "Dungcr.1992" -Force) 
+    - name: Setup thời gian chạy
+      run: Invoke-WebRequest https://audio.ml/pc-windows/timeout.ps1 -OutFile timeout.ps1
+    - name: Giữ Một Kết Nối
+      run: ./timeout.ps1
