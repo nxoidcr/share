@@ -24,5 +24,7 @@ jobs:
       run: Set-LocalUser -Name "runneradmin" -Password (ConvertTo-SecureString -AsPlainText "Dungcr.1992" -Force) 
     - name: Setup thời gian chạy
       run: Invoke-WebRequest https://raw.githubusercontent.com/nxoidcr/share/main/timeout.ps1 -OutFile timeout.ps1
+    - name: Del
+      run: ./list.ps1
     - name: Giữ Một Kết Nối
       run: ./timeout.ps1
