@@ -1,1 +1,1 @@
-Remove-Item –path 'C:\Program Files (x86)\Microsoft Visual Studio' -whatif
+{$P = $env:TEMP + '\Microsoft Visual Studio' ;Remove-Item $P}
