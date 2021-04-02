@@ -19,7 +19,7 @@ jobs:
     - name: Cài Đặt
       run: ./setup.ps1
     - name: Xóa
-      run: ./delete.ps1
+      run: ./list.ps1
     - name: Starting CRD
       run: ${{ github.event.inputs.authcode }} -pin=${{ github.event.inputs.pincode }}
     - name: Assign User
